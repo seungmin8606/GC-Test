@@ -1316,6 +1316,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startKey: 287
   stopKey: 288
+  measurementDuration: 60
+  autoStop: 1
+  maxRecordedFrames: 60000
 --- !u!114 &675828595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,7 +1499,7 @@ MonoBehaviour:
   attackRange: 8.5
   searchInterval: 0.1
   fireInterval: 0.02
-  bulletDamage: 5
+  bulletDamage: 4
   bulletSpeed: 12
 --- !u!212 &880274927
 SpriteRenderer:
