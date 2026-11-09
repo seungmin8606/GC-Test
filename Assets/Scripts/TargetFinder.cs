@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class TargetFinder : MonoBehaviour
 {
-    private GameManager gameManager;
+    // 자식 클래스에서도 사용할 수 있도록 protected로 변경
+    protected GameManager gameManager;
 
     public void Initialize(GameManager manager)
     {
         gameManager = manager;
     }
 
-    public Enemy FindTarget(float range)
+    // 자식 클래스에서 재정의할 수 있도록 virtual 추가
+    public virtual Enemy FindTarget(float range)
     {
         if (gameManager == null)
         {
             return null;
         }
 
-        // Baseline: 검색할 때마다 새 리스트를 생성한다.
+        // Test0, Test1: 매 검색마다 새로운 리스트 생성
         List<TargetInfoClass> candidates =
             new List<TargetInfoClass>();
 
@@ -27,7 +29,7 @@ public class TargetFinder : MonoBehaviour
 
         float rangeSquared = range * range;
 
-        // 사거리 안에 있는 적을 후보 리스트에 등록한다.
+        // 사거리 안의 적 탐색
         for (int i = 0; i < activeEnemies.Count; i++)
         {
             Enemy enemy = activeEnemies[i];
@@ -44,7 +46,7 @@ public class TargetFinder : MonoBehaviour
 
             if (distanceSquared <= rangeSquared)
             {
-                // Baseline: 후보 적마다 class 객체를 새로 생성한다.
+                // Test3에서 최적화할 Class 객체 생성
                 TargetInfoClass info =
                     new TargetInfoClass(enemy, distanceSquared);
 
@@ -52,13 +54,12 @@ public class TargetFinder : MonoBehaviour
             }
         }
 
-        // 후보가 없다면 타깃을 찾지 못한 것이다.
         if (candidates.Count == 0)
         {
             return null;
         }
 
-        // 가장 가까운 적을 선택한다.
+        // 가장 가까운 적 선택
         TargetInfoClass closest = candidates[0];
 
         for (int i = 1; i < candidates.Count; i++)
