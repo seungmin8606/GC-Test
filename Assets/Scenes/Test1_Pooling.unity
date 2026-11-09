@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 63746398}
   attackRange: 8.5
   searchInterval: 0.1
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 218719858}
   attackRange: 8.5
   searchInterval: 0.1
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 301149509}
   attackRange: 8.5
   searchInterval: 0.1
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 329962738}
   attackRange: 8.5
   searchInterval: 0.1
@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d45e38b115ced478e980f8ad0e34c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   spawnInterval: 0.2
   spawnPosition: {x: -9, y: 0, z: 0}
 --- !u!1 &519420028
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 837280633}
   attackRange: 8.5
   searchInterval: 0.1
@@ -1491,12 +1491,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 880274925}
   attackRange: 8.5
   searchInterval: 0.1
   fireInterval: 0.02
-  bulletDamage: 5
+  bulletDamage: 4
   bulletSpeed: 12
 --- !u!212 &880274927
 SpriteRenderer:
@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 977099545}
   attackRange: 8.5
   searchInterval: 0.1
@@ -1727,7 +1727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 1472723521}
   attackRange: 8.5
   searchInterval: 0.1
@@ -1845,7 +1845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 1607886066}
   attackRange: 8.5
   searchInterval: 0.1
@@ -1928,7 +1928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1998630853}
-  - component: {fileID: 1998630852}
+  - component: {fileID: 1998630854}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -1936,21 +1936,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1998630852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998630851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6b782e7c5cea74eafd01e0cd14c107, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 675828595}
-  enemyPrefab: {fileID: -1292003901511407376, guid: d64610885bc0afe4e90a4d132c65c4cc, type: 3}
-  bulletPrefab: {fileID: 5096195967849265333, guid: 17bd19c2de1203445840dd8b4e3c572b, type: 3}
 --- !u!4 &1998630853
 Transform:
   m_ObjectHideFlags: 0
@@ -1966,6 +1951,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1998630854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998630851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368372bcd25da424e9d111b2930a1952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 675828595}
+  enemyPrefab: {fileID: -1292003901511407376, guid: d64610885bc0afe4e90a4d132c65c4cc, type: 3}
+  bulletPrefab: {fileID: 5096195967849265333, guid: 17bd19c2de1203445840dd8b4e3c572b, type: 3}
+  initialEnemyPoolSize: 100
+  initialBulletPoolSize: 1200
+  enemyPoolExpansions: 0
+  bulletPoolExpansions: 0
 --- !u!1 &2006661396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,7 +2014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 675828595}
-  spawnManager: {fileID: 1998630852}
+  spawnManager: {fileID: 1998630854}
   targetFinder: {fileID: 2006661397}
   attackRange: 8.5
   searchInterval: 0.1

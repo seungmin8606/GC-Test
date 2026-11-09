@@ -17,6 +17,9 @@ public class Bullet : MonoBehaviour
 
     private bool isInitialized;
 
+    // 총알 생성 시점의 타깃 버전
+    private int targetSpawnVersion;
+
     public void Initialize(
         Enemy targetEnemy,
         float bulletDamage,
@@ -27,6 +30,8 @@ public class Bullet : MonoBehaviour
         damage = bulletDamage;
         moveSpeed = bulletSpeed;
         spawnManager = manager;
+
+        targetSpawnVersion = targetEnemy.SpawnVersion;
 
         elapsedLifetime = 0f;
         isInitialized = true;
@@ -49,11 +54,12 @@ public class Bullet : MonoBehaviour
         }
 
         // 타깃이 없거나 이미 처치됐다면 총알을 제거한다.
-        if (target == null || !target.IsAlive)
+        if (target == null || !target.IsAlive || target.SpawnVersion != targetSpawnVersion)
         {
             Despawn();
             return;
         }
+
 
         Vector3 targetPosition = target.transform.position;
         Vector3 currentPosition = transform.position;

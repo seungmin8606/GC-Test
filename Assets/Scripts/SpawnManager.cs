@@ -5,23 +5,22 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private Enemy enemyPrefab;
-    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] protected GameManager gameManager;
+    [SerializeField] protected Enemy enemyPrefab;
+    [SerializeField] protected Bullet bulletPrefab;
 
-    public Enemy SpawnEnemy(Vector3 position)
+    public virtual Enemy SpawnEnemy(Vector3 position)
     {
         if (gameManager == null || enemyPrefab == null)
         {
             Debug.LogError(
-                "SpawnManager 설정 오류: GameManager 또는 Enemy Prefab이 없습니다.",
+                "SpawnManager: GameManager 또는 Enemy Prefab 누락",
                 this
             );
-
             return null;
         }
 
-        // Baseline: 적을 새로 생성한다.
+        // Test0: 동적 생성
         Enemy enemy = Instantiate(
             enemyPrefab,
             position,
@@ -29,43 +28,34 @@ public class SpawnManager : MonoBehaviour
         );
 
         enemy.Initialize(gameManager, this);
-
         return enemy;
     }
 
-    public void DespawnEnemy(Enemy enemy)
+    public virtual void DespawnEnemy(Enemy enemy)
     {
         if (enemy == null)
         {
             return;
         }
 
-        // Baseline: 적을 파괴한다.
+        // Test0: 파괴
         Destroy(enemy.gameObject);
     }
 
-    public Bullet SpawnBullet(
+    public virtual Bullet SpawnBullet(
         Vector3 position,
         Enemy target,
         float damage,
         float speed)
     {
-        if (bulletPrefab == null)
-        {
-            Debug.LogError(
-                "SpawnManager 설정 오류: Bullet Prefab이 없습니다.",
-                this
-            );
-
-            return null;
-        }
-
-        if (target == null || !target.IsAlive)
+        if (bulletPrefab == null ||
+            target == null ||
+            !target.IsAlive)
         {
             return null;
         }
 
-        // Baseline: 총알을 새로 생성한다.
+        // Test0: 동적 생성
         Bullet bullet = Instantiate(
             bulletPrefab,
             position,
@@ -73,18 +63,17 @@ public class SpawnManager : MonoBehaviour
         );
 
         bullet.Initialize(target, damage, speed, this);
-
         return bullet;
     }
 
-    public void DespawnBullet(Bullet bullet)
+    public virtual void DespawnBullet(Bullet bullet)
     {
         if (bullet == null)
         {
             return;
         }
 
-        // Baseline: 총알을 파괴한다.
+        // Test0: 파괴
         Destroy(bullet.gameObject);
     }
 }

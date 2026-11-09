@@ -17,9 +17,13 @@ public class Enemy : MonoBehaviour
     private bool isInitialized;
     private bool isDead;
 
+    // 풀에서 재사용될 때마다 증가하는 버전
+    private int spawnVersion;
+
     public float CurrentHP => currentHP;
     public float MaxHP => maxHP;
     public bool IsAlive => isInitialized && !isDead;
+    public int SpawnVersion => spawnVersion;
 
     private void Awake()
     {
@@ -46,6 +50,9 @@ public class Enemy : MonoBehaviour
         currentHP = maxHP;
         isDead = false;
         isInitialized = true;
+
+        // 새로운 생성 주기임을 표시
+        spawnVersion++;
 
         gameManager.RegisterEnemy(this);
     }
