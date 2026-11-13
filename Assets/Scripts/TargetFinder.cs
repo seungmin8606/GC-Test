@@ -21,11 +21,9 @@ public class TargetFinder : MonoBehaviour
         }
 
         // Test0, Test1: 매 검색마다 새로운 리스트 생성
-        List<TargetInfoClass> candidates =
-            new List<TargetInfoClass>();
+        List<TargetInfoClass> candidates = new List<TargetInfoClass>();
 
-        IReadOnlyList<Enemy> activeEnemies =
-            gameManager.ActiveEnemies;
+        IReadOnlyList<Enemy> activeEnemies = gameManager.ActiveEnemies;
 
         float rangeSquared = range * range;
 
@@ -39,16 +37,15 @@ public class TargetFinder : MonoBehaviour
                 continue;
             }
 
-            Vector3 difference =
-                enemy.transform.position - transform.position;
+            Vector3 difference = enemy.transform.position - transform.position;
 
             float distanceSquared = difference.sqrMagnitude;
 
             if (distanceSquared <= rangeSquared)
             {
                 // Test3에서 최적화할 Class 객체 생성
-                TargetInfoClass info =
-                    new TargetInfoClass(enemy, distanceSquared);
+
+                TargetInfoClass info = new TargetInfoClass(enemy, distanceSquared);
 
                 candidates.Add(info);
             }

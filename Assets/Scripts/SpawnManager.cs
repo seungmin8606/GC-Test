@@ -21,10 +21,7 @@ public class SpawnManager : MonoBehaviour
         }
 
         // Test0: 동적 생성
-        Enemy enemy = Instantiate(
-            enemyPrefab,
-            position,
-            Quaternion.identity
+        Enemy enemy = Instantiate(enemyPrefab,position,Quaternion.identity
         );
 
         enemy.Initialize(gameManager, this);

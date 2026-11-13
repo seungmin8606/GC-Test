@@ -13,9 +13,7 @@ public class ReusableTargetFinder : TargetFinder
     private void Awake()
     {
         // 리스트는 한 번만 생성
-        candidates = new List<TargetInfoClass>(
-            Mathf.Max(0, initialCapacity)
-        );
+        candidates = new List<TargetInfoClass>(Mathf.Max(0, initialCapacity));
     }
 
     public override Enemy FindTarget(float range)
@@ -28,8 +26,7 @@ public class ReusableTargetFinder : TargetFinder
         // Test2 핵심: 기존 리스트를 비우고 재사용
         candidates.Clear();
 
-        IReadOnlyList<Enemy> activeEnemies =
-            gameManager.ActiveEnemies;
+        IReadOnlyList<Enemy> activeEnemies = gameManager.ActiveEnemies;
 
         float rangeSquared = range * range;
 
@@ -51,8 +48,7 @@ public class ReusableTargetFinder : TargetFinder
             if (distanceSquared <= rangeSquared)
             {
                 // 아직 Class 객체 생성은 유지
-                TargetInfoClass info =
-                    new TargetInfoClass(enemy, distanceSquared);
+                TargetInfoClass info = new TargetInfoClass(enemy, distanceSquared);
 
                 candidates.Add(info);
             }

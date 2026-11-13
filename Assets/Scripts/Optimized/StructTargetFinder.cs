@@ -14,9 +14,7 @@ public class StructTargetFinder : TargetFinder
     private void Awake()
     {
         // Test2와 동일한 초기 용량 사용
-        candidates = new List<TargetInfoStruct>(
-            Mathf.Max(0, initialCapacity)
-        );
+        candidates = new List<TargetInfoStruct>(Mathf.Max(0, initialCapacity));
     }
 
     public override Enemy FindTarget(float range)
@@ -52,11 +50,7 @@ public class StructTargetFinder : TargetFinder
             if (distanceSquared <= rangeSquared)
             {
                 // Test3 핵심: Struct 데이터 생성
-                TargetInfoStruct info =
-                    new TargetInfoStruct(
-                        enemy,
-                        distanceSquared
-                    );
+                TargetInfoStruct info = new TargetInfoStruct(enemy, distanceSquared);
 
                 candidates.Add(info);
             }

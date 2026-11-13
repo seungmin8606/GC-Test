@@ -65,37 +65,16 @@ public class HUDController : MonoBehaviour
 
     private void UpdateTimeText(int seconds)
     {
-        if (optimizeUIText)
-        {
-            timeText.SetText("Time: {0}", (float)seconds);
-        }
-        else
-        {
-            timeText.text = "Time: " + seconds.ToString();
-        }
+        timeText.text = "Time: " + seconds.ToString();
     }
 
     private void UpdateScoreText(int score)
     {
-        if (optimizeUIText)
-        {
-            scoreText.SetText("Score: {0}", (float)score);
-        }
-        else
-        {
-            scoreText.text = "Score: " + score.ToString();
-        }
+        scoreText.text = "Score: " + score.ToString();
     }
 
     private void UpdateKillsText(int kills)
     {
-        if (optimizeUIText)
-        {
-            killsText.SetText("Kills: {0}", (float)kills);
-        }
-        else
-        {
-            killsText.text = "Kills: " + kills.ToString();
-        }
+        killsText.text = "Kills: " + kills.ToString();
     }
 }

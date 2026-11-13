@@ -162,9 +162,8 @@ public class PooledSpawnManager : SpawnManager
         {
             bullet = bulletPool.Pop();
         }
-        else
+        else // 사전 생성 수량이 부족한 경우
         {
-            // 사전 생성 수량이 부족한 경우
             bullet = CreateBullet();
             bulletPoolExpansions++;
         }
@@ -173,13 +172,7 @@ public class PooledSpawnManager : SpawnManager
         bullet.transform.rotation = Quaternion.identity;
 
         // 새로운 타깃과 발사 정보 설정
-        bullet.Initialize(
-            target,
-            damage,
-            speed,
-            this
-        );
-
+        bullet.Initialize(target, damage, speed, this);
         bullet.gameObject.SetActive(true);
 
         return bullet;
